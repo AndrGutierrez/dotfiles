@@ -1,0 +1,42 @@
+# Don't print a new line at the start of the prompt
+add_newline = false
+
+# Replace the "❯" symbol in the prompt with "➜"
+[character]                            # The name of the module we are configuring is "character"
+use_symbol_for_status = true
+# success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
+error_symbol = "[✗❯](bold red)"
+
+
+# Disable the package module, hiding it from the prompt completely
+# [package]
+# disabled = true
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "🔌 "
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 100
+style = "bold green"
+
+# [time]
+# time_format = "%T"
+# format = "🕙$time($style) "
+# style = "bright-white"
+# disabled = false
+[python]
+symbol = "  "
+
+[nodejs]
+symbol = "⬢ "
+
+
+# [hostname]
+# ssh_only = false
+# format = "[$hostname]($style) -> "
+# style = "bold cyan"
+
+
+[directory]
+format = "[$path]($style)[$read_only]($read_only_style) "

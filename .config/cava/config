@@ -129,11 +129,11 @@ gradient_color_3 = '#9A7ECC'
 gradient_color_4 = '#C678DD'
 gradient_color_5 = '#C678DD'
 gradient_color_6 = '#C678DD'
-; gradient_color_4 = '#cccc33'
-; gradient_color_5 = '#cca633'
-; gradient_color_6 = '#cc8033'
-; gradient_color_7 = '#cc5933'
-; gradient_color_8 = '#cc3333'
+# gradient_color_4 = '#cccc33'
+# gradient_color_5 = '#cca633'
+# gradient_color_6 = '#cc8033'
+# gradient_color_7 = '#cc5933'
+# gradient_color_8 = '#cc3333'
 
 
 

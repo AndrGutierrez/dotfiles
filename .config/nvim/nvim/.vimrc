@@ -1,5 +1,3 @@
-" if you have a trouble with the python 3 host
-" run :UpdateRemotePlugins and PlugInstall
 " vim-bootstrap 2021-01-09 16:58:06
 
 set nocompatible              " required
@@ -41,7 +39,7 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 Plug 'scrooloose/nerdtree' "tree file manager
 Plug 'jistr/vim-nerdtree-tabs' "tree file manager
 Plug 'tpope/vim-commentary' "esasy comments typing gcc
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive' 
 Plug 'vim-airline/vim-airline' "cool status bar
 Plug 'vim-airline/vim-airline-themes' "themes for airline
 Plug 'airblade/vim-gitgutter' "git integration
@@ -49,11 +47,11 @@ Plug 'vim-scripts/grep.vim'
 Plug 'vim-scripts/CSApprox'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'dense-analysis/ale' "linting
+Plug 'dense-analysis/ale' "linting for python
 Plug 'Yggdroot/indentLine'
 Plug 'editor-bootstrap/vim-bootstrap-updater'
 Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
-Plug 'ap/vim-css-color'
+Plug 'mindriot101/vim-yapf'
 
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
@@ -110,8 +108,8 @@ Plug 'stephpy/vim-php-cs-fixer'
 " Plug 'davidhalter/jedi-vim'
 " Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 Plug 'vim-python/python-syntax'
-" Plug 'numirias/semshi'
-
+Plug 'numirias/semshi'
+Plug 'sheerun/vim-polyglot'
 " Plug 'gryf/pylint-vim'
 " Plug 'google/yapf'
 Plug 'Vimjas/vim-python-pep8-indent'"auto indentation
@@ -122,28 +120,16 @@ Plug 'maxmellon/vim-jsx-pretty'
 "coc
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" C# and unity linting and completion
-Plug 'OmniSharp/omnisharp-vim'
-
 "Useless pretty stuff
 Plug 'ryanoasis/vim-devicons'
 Plug 'frazrepo/vim-rainbow'
 
-"bufferline
-Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
-" Plug 'ryanoasis/vim-devicons' Icons without colours
-Plug 'akinsho/nvim-bufferline.lua'
-
 "Colorschemes
 Plug 'wesQ3/wombat.vim' "colorscheme
 Plug 'drewtempelmeyer/palenight.vim'
-Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'sonph/onehalf'
-Plug 'ghifarit53/tokyonight-vim'
-Plug 'fneu/breezy'
 
-" ligatures
-Plug 'tonsky/firacode'
+"kite
+" Plug 'kiteco/plugins'
 "*****************************************************************************
 "*****************************************************************************
 
@@ -167,24 +153,9 @@ set fileencoding=utf-8
 set fileencodings=utf-8
 
 
-"termgui colors
-set termguicolors
+" colorscheme wombat
+colorscheme palenight
 
-" colorscheme palenight
-colorscheme dracula
-" colorscheme tokyonight
-" colorscheme breezy
-
-if exists('theme') && theme == 'light'
-  set background=light
-else
-  set background=dark
-  hi Normal ctermbg=none
-endif
-
-highlight Normal ctermbg=none
-highlight NonText ctermbg=none
-" set background=light
 "" Fix backspace indent
 set backspace=indent,eol,start
 
@@ -249,15 +220,13 @@ else
   let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-
+  
 endif
 
-" nvim's background will have terminal's background's same color
-hi Normal ctermbg=none
 
 
 "" Disable the blinking cursor.
-" set gcr=a:blinkon0
+set gcr=a:blinkon0
 
 au TermEnter * setlocal scrolloff=0
 au TermLeave * setlocal scrolloff=3
@@ -286,19 +255,10 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-" let g:airline_theme = "palenight"
-" let g:airline_theme = "atomic"
-" let g:airline_theme = "violet"
-" let g:airline_theme = "biogoo"
-" let g:airline_theme = "solarized"
-" let g:airline_theme = "behelit"
-let g:airline_theme = "breezy"
+let g:airline_theme = "palenight"
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#ale#enabled = 1
-"**********************
-"enable tabline
-"**********************
-" let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 let g:airline_powerline_fonts = 1
@@ -470,13 +430,12 @@ let g:UltiSnipsEditSplit="vertical"
 
 let g:ale_linters = {
       \   'python': ['pylint'],
+      \   'ruby': ['standardrb', 'rubocop'],
       \   'javascript': ['eslint', 'prettier'],
-      \   'cs': ['OmniSharp'],
       \}
 
 let g:ale_fixers = {
       \    'python': ['yapf'],
-      \    'javascript': ['prettier']
       \}
 
 nmap <F10> :ALEFix<CR>
@@ -551,7 +510,7 @@ nnoremap <Leader>o :.Gbrowse<CR>
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
 let g:user_emmet_leader_key=','
 
-"----- My config prettier -----
+"----- My config prettier ----- 
 
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
@@ -622,9 +581,7 @@ augroup END
 
 " ale
 :call extend(g:ale_linters, {
-    \'python': ['pylint'],
-    \'javascript': ['prettier'] 
-    \})
+    \'python': ['flake8'], })
 
 
 " Syntax highlight
@@ -665,9 +622,9 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 
-if !exists('g:airline_powerline_fonts')
-  let g:airline#extensions#tabline#left_sep = ' '
-  let g:airline#extensions#tabline#left_alt_sep = '|'
+" if !exists('g:airline_powerline_fonts')
+  " let g:airline#extensions#tabline#left_sep = ' '
+  " let g:airline#extensions#tabline#left_alt_sep = '|'
 "   let g:airline_left_sep          = '▶'
   let g:airline_left_alt_sep      = '»'
 "   let g:airline_right_sep         = '◀'
@@ -682,58 +639,38 @@ if !exists('g:airline_powerline_fonts')
   let g:airline_symbols.paste     = 'Þ'
   let g:airline_symbols.paste     = '∥'
   let g:airline_symbols.whitespace = 'Ξ'
-else
-  let g:airline#extensions#tabline#left_sep = ''
-  let g:airline#extensions#tabline#left_alt_sep = ''
+" else
+"   let g:airline#extensions#tabline#left_sep = ''
+"   let g:airline#extensions#tabline#left_alt_sep = ''
 
 "   " powerline symbols
-  let g:airline_left_sep = ''
-  let g:airline_left_alt_sep = ''
-  let g:airline_right_sep = ''
-  let g:airline_right_alt_sep = ''
+"   let g:airline_left_sep = ''
+"   let g:airline_left_alt_sep = ''
+"   let g:airline_right_sep = ''
+"   let g:airline_right_alt_sep = ''
   let g:airline_symbols.branch = ''
   let g:airline_symbols.readonly = ''
   let g:airline_symbols.linenr = ''
-endif
+" endif
 "
 "
-"**************************************
-"bufferline config
-"*************************************
-lua require'bufferline'.setup{}
-
 "----- My config autocmd's----
 autocmd VimEnter * NERDTree
-"autocmd VimEnter * ALEToggle
+autocmd VimEnter * ALEToggle
+autocmd Filetype html syntax on
 
 let g:kite_supported_languages = ['*']
 highlight Comment cterm=italic
 
-autocmd BufWritePost * ALEEnable
-
-" autocmd VimEnter * e
-" autocmd BufWritePost *.php !prettier %  --write
+autocmd BufWritePost * ALEToggle
+" autocmd BufWritePost *.php !prettier %  --write 
 "
 "---- cursorline -----
 set cursorline
-:highlight CursorLine ctermfg=White ctermbg=1 cterm=bold
 
-" highlight CursorLine ctermbg=Cyan
+highlight CursorLine ctermbg=Cyan
 " //this highlight is for wombat theme
 " highlight CursorLine ctermbg=235
-" this is for palenight
-" highlight CursorLine ctermbg=237
-" this is for dracula
-" highlight CursorLine ctermbg=8
+highlight CursorLine ctermbg=237
 
 "----- My config yapf -----
-"
-"
-hi Normal ctermbg=none
-" highlight VertSplit cterm=NONE
-"
-"----TRANSPARENCY-----
-" hi Normal guibg=NONE ctermbg=NONE
-"
-" -----OMNISHARP----
-let g:OmniSharp_server_use_mono = 1

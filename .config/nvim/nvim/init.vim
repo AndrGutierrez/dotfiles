@@ -26,6 +26,7 @@ Plug 'OmniSharp/omnisharp-vim' "C#
 
 " COC COMPLETION
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 
 " HTML
 Plug 'mattn/emmet-vim'
@@ -35,7 +36,6 @@ Plug 'ap/vim-css-color'
 
 " JS
 Plug 'jelera/vim-javascript-syntax'
-Plug 'prettier/vim-prettier'
 
 " PYTHON
 Plug 'vim-python/python-syntax'
@@ -125,12 +125,13 @@ set termguicolors
       \}
 
 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save=1
 
-let g:ale_linters_explicit = 1
 
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '⚠'
+let g:ale_linters_explicit=1
+
+let g:ale_sign_error='✘'
+let g:ale_sign_warning='⚠'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 
@@ -189,7 +190,7 @@ let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
 let g:NERDTreeShowBookmarks=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 30
+let g:NERDTreeWinSize = 25
 let NERDTreeMinimalUI = 1
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite

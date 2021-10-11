@@ -18,6 +18,9 @@ Plug 'scrooloose/nerdtree' "tree file manager
 Plug 'jistr/vim-nerdtree-tabs' "tree file manager
 Plug 'ryanoasis/vim-devicons'
 
+" SURROUND
+Plug 'tpope/vim-surround'
+
 " LINTING
 Plug 'dense-analysis/ale' "linting
 
@@ -43,6 +46,9 @@ Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " REACTJS
 Plug 'maxmellon/vim-jsx-pretty'
+
+" SYMFONY
+Plug 'evidens/vim-twig'
 
 " Install snipmate:
 Plug 'SirVer/ultisnips'

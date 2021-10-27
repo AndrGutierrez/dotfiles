@@ -10,7 +10,7 @@ Plug 'vim-airline/vim-airline' "cool status bar
 Plug 'vim-airline/vim-airline-themes' "themes for airline
 
 " BUFFERLINE
-Plug 'akinsho/nvim-bufferline.lua'
+" Plug 'akinsho/nvim-bufferline.lua'
 Plug 'kyazdani42/nvim-web-devicons' " Recommended (for coloured icons)
 
 " NERDTREE
@@ -28,7 +28,8 @@ Plug 'dense-analysis/ale' "linting
 Plug 'OmniSharp/omnisharp-vim' "C#
 
 " COC COMPLETION
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'iamcco/coc-tailwindcss',  {'do': 'yarn install --frozen-lockfile && yarn run build'}
 
 " HTML
@@ -56,12 +57,6 @@ Plug 'SirVer/ultisnips'
 " Install snippets:
 Plug 'sudar/vim-wordpress-snippets'
 
-" PRETTIER
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/0.x'
-  \ }
-
 " INDENTATION
 Plug 'Yggdroot/indentLine'
 Plug 'tpope/vim-sleuth'
@@ -73,6 +68,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " COMMENTS
 Plug 'tpope/vim-commentary' "esasy comments typing gcc
+
+
+" BETTER TABS
+" Plug 'romgrk/barbar.nvim'
 
 call plug#end()
 
@@ -125,9 +124,10 @@ set termguicolors
 
  let g:ale_fixers = {
       \    'python': ['yapf'],
-      \    'javascript': ['prettier'],
-      \    'jsx': ['prettier'],
-      \    'css': ['prettier']
+      \    'javascript': ['prettier', 'eslint'],
+      \    'jsx': ['prettier', 'eslint'],
+      \    'css': ['prettier'],
+      \    'html':['prettier']
       \}
 
 
@@ -198,10 +198,8 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
 let g:NERDTreeWinSize = 25
 let NERDTreeMinimalUI = 1
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
 nnoremap <silent> <F2> :NERDTreeFind<CR>
-nnoremap <silent> <F3> :NERDTreeToggle<CR>
+nmap <F3> :NERDTreeToggle<CR>
 
 
 "**************
@@ -306,7 +304,8 @@ noremap <Leader>gsh :Gpush<CR>
 noremap <Leader>gll :Gpull<CR>
 noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
+" noremap <Leader>gd :Gvdiff<CR>
+nmap <silent> gd <Plug>(coc-definition)
 noremap <Leader>gr :Gremove<CR>
 
 " session management

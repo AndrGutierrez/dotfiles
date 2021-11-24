@@ -43,7 +43,7 @@ Plug 'jelera/vim-javascript-syntax'
 
 " PYTHON
 Plug 'vim-python/python-syntax'
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " REACTJS
 Plug 'maxmellon/vim-jsx-pretty'
@@ -306,6 +306,9 @@ noremap <Leader>gs :Gstatus<CR>
 noremap <Leader>gb :Gblame<CR>
 " noremap <Leader>gd :Gvdiff<CR>
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 noremap <Leader>gr :Gremove<CR>
 
 " session management

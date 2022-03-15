@@ -1,4 +1,4 @@
-" ***********
+
 " * PLUGINS *
 " ***********
 call plug#begin('~/.config/nvim/plugged')
@@ -51,11 +51,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 " SYMFONY
 Plug 'evidens/vim-twig'
 
-" Install snipmate:
-Plug 'SirVer/ultisnips'
 
-" Install snippets:
-Plug 'sudar/vim-wordpress-snippets'
 
 " INDENTATION
 Plug 'Yggdroot/indentLine'
@@ -325,5 +321,17 @@ nnoremap <silent> <S-t> :tabnew<CR>
 
 
 " PHP
-set tabstop=4
-set shiftwidth=4
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()set tabstop=4
+
+
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"

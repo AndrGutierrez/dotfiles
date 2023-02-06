@@ -2,8 +2,8 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor -d I II III IV V
-bspc monitor DisplayPort-0 -d VI VII VIII IX X
+bspc monitor HDMI-A-0 -d VI VII VIII IX X
+bspc monitor DisplayPort-0 -d I II III IV V
 bspc config border_width         2
 bspc config window_gap          12
 
@@ -27,29 +27,33 @@ picom &
 #este es para polybar
 
 
-mpd &
-mpc play &
-xterm &
-discord &
+# mpd &
+# mpc play &
+# xterm &
+# discord &
 brave &
 # firefox &
 # picom --experimental-backends
 # glava --desktop --force-mod=graph
-megasync &
+# megasync &
+setxkbmap latam &
+plank &
 
-
+dual monitor setup
 if type "xrandr"; then
   for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
-    MONITOR=$m sh ~/.config/polybar/launch.sh --forest &
-    MONITOR=$m plank -n dock1 & plank -n dock2 &
+    MONITOR=$m sh ~/.config/polybar/launch.sh --material &
+    # MONITOR=$m plank -n dock1 & plank -n dock2 &
   done
-else sh ~/.config/polybar/launch.sh &
+else sh ~/.config/polybar/launch.sh --material &
 fi
 
-//low battery notification
-BATTINFO=`acpi -b`
-if [[ `echo $BATTINFO | grep Discharging` && `echo $BATTINFO | cut -f 5 -d " "` < 00:15:00 ]] ; then
-    DISPLAY=:0.0 /usr/bin/notify-send "low battery" "$BATTINFO"
-fi
+# sh ~/.config/polybar/launch.sh --material  &
+sh ~/scripts/screen.sh --material  &
+# //low battery notification
+# BATTINFO=`acpi -b`
+# if [[ `echo $BATTINFO | grep Discharging` && `echo $BATTINFO | cut -f 5 -d " "` < 00:15:00 ]] ; then
+#     DISPLAY=:0.0 /usr/bin/notify-send "low battery" "$BATTINFO"
+# fi
 
 [ ! -s ~/.config/mpd/pid ] && mpd

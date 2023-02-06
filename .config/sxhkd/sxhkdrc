@@ -3,10 +3,10 @@
 #
 # hide topbar
 super + z
-    (xdo id -m -N Polybar && polybar-msg cmd hide)&
+    polybar-msg cmd hide
 
 super + x
-    (xdo id -m -N Polybar && polybar-msg cmd show)&
+    polybar-msg cmd show
 
 #prompt
 super + r
@@ -24,8 +24,7 @@ super + Tab
 
 # browser
 super + q
-    firefox
-    # brave
+    brave
 
 # terminal emulator
 super + Return

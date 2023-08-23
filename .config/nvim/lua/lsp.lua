@@ -9,11 +9,13 @@ end
 
 -- Capabilities
 caps.textDocument.completion.completionItem.snippetSupport = true
-
+lspconfig.jsonls.setup {
+  capabilities = caps,
+}
 -- Python
 lspconfig.pyright.setup({
   capabilities = caps,
-  on_attach = no_format
+  -- on_attach = no_format
 })
 
 -- PHP
@@ -27,6 +29,12 @@ lspconfig.tsserver.setup({
 
 -- Rust
 lspconfig.rust_analyzer.setup({
+  capabilities = snip_caps,
+  on_attach = no_format
+})
+
+-- CPP
+lspconfig.clangd.setup({
   capabilities = snip_caps,
   on_attach = no_format
 })

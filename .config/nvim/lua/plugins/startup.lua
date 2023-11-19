@@ -29,10 +29,6 @@
 			"williamboman/mason.nvim",
 			-- run = ":MasonUpdate" -- :MasonUpdate updates registry contents
 		 }
-		-- use {
-		-- 	"jiangmiao/auto-pairs",
-		-- 	config = function() require("nvim-autopairs").setup {} end
-		-- }
 		 use {
 			"windwp/nvim-autopairs",
 			config = function() require("nvim-autopairs").setup {} end
@@ -45,8 +41,7 @@
 			run = "make install_jsregexp"
 		})
 		use 'romgrk/barbar.nvim'
-		use "williamboman/mason-lspconfig.nvim"
-	
+		use ("williamboman/mason-lspconfig.nvim")
 
 end)
 

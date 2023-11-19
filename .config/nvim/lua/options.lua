@@ -9,3 +9,9 @@ require('Comment').setup()
 
 vim.api.nvim_set_keymap("n", "<c-c>", '"*y :let @+=@*<CR>', {noremap=true, silent=true})
 vim.api.nvim_set_keymap("n", "<c-v>", '"+p', {noremap=true, silent=true})
+set.clipboard = "unnamedplus"
+
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2

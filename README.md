@@ -1,5 +1,5 @@
 # My Dotfiles
-This is my dotfiles config for my Arch linux setup
+This is my dotfiles config for my Debian setup
 
 
 > *Note that since I have a lot of dependencies or plugins that I don't even remember some of these configurations won't work*

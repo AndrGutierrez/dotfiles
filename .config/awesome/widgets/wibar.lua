@@ -1,6 +1,5 @@
 local wibox = require("wibox")
 local awful = require("awful")
-local beautiful = require("beautiful")
 -- local mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- different size for different monitors because I have two monitors
@@ -17,7 +16,8 @@ local function set_wibar(s)
 		screen = s,
 		border_width = 10,
 		height = height,
-		-- bg = "#c1494d",
+		-- transparent
+		-- bg = "#fffffff",
 	})
 	s.mywibox:setup({
 		border_width = 10,

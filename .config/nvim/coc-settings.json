@@ -1,9 +1,0 @@
-{
-    "coc.source.OmniSharp.enable": true,
-    "coc.source.OmniSharp.triggerCharacters": ".",
-      "coc.preferences.jumpCommand": "tab drop",
-
-"codeLens.enable": true,
-"java.referencesCodeLens.enabled": true,
-"java.jdt.ls.vmargs": "-javaagent:/usr/local/share/lombok/lombok.jar"
-}

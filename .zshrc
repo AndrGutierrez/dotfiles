@@ -71,7 +71,7 @@ ENABLE_CORRECTION="true"
 plugins=(
 	git
 	zsh-syntax-highlighting
-	fzf
+	fzf-zsh-plugin
 	zsh-autosuggestions
 )
 
@@ -103,7 +103,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 zle -N zle-keymap-select
-neofetch --w3m ~/Pictures/miku/pond_smile.png
+# neofetch --w3m "./Pictures/neofetch.png" 
+# neofetch
 setxkbmap latam
 export EDITOR=nvim
 # >>> conda initialize >>>

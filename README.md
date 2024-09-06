@@ -7,7 +7,7 @@ This is my dotfiles config for my Debian setup
 ## Prerequisites
 This repo contains configuration for:
 - neovim
-- picom ([Jonaburg's fork](https://github.com/jonaburg/picom))
+- picom ([fdev31's fork](https://github.com/fdev31/picom))
 - zsh
 - oh-my-zsh
 - neofetch

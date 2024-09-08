@@ -28,10 +28,15 @@ local taglist_buttons = gears.table.join(
 local function set_taglist(s)
 	awful.tag({ "  ", "  ", "  ", "  ", " 󰡨 " }, s, awful.layout.layouts[1])
 	local original_taglist_label = awful.widget.taglist.taglist_label
+	-- local tag_colors_b =
+	-- 	{ "#3a3f50", "#3a3a50", "#3f3a50", "#453a50", "#4b3b51", "#4a3a50", "#503a50", "#503a4a", "#503a45" }
+	-- local tag_colors_s =
+	-- 	{ "#606a85", "#606085", "#6a6085", "#736085", "#7b6085", "#7c6085", "#856085", "#85607c", "#856073" }
+
 	local tag_colors_b =
-		{ "#3a3f50", "#3a3a50", "#3f3a50", "#453a50", "#4b3b51", "#4a3a50", "#503a50", "#503a4a", "#503a45" }
+		{ "#222831", "#222831", "#222831", "#222831", "#222831", "#222831", "#222831", "#222831", "#222831" }
 	local tag_colors_s =
-		{ "#606a85", "#606085", "#6a6085", "#736085", "#7b6085", "#7c6085", "#856085", "#85607c", "#856073" }
+		{ "#393E46", "#393E46", "#393E46", "#393E46", "#393E46", "#393E46", "#393E46", "#393E46", "#393E46" }
 	function awful.widget.taglist.taglist_label(tag, args, tb)
 		local idx = (tag.index - 1) % #tag_colors_b + 1
 		local args = { bg_focus = tag_colors_s[idx] }

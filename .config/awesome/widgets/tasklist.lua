@@ -25,8 +25,10 @@ local function set_tasklist(s)
 		filter = awful.widget.tasklist.filter.currenttags,
 		buttons = tasklist_buttons,
 		style = {
-			-- bg_normal = "#ffffff",
-			-- bg_focus = "#ffffff",
+			bg_normal = "#222831",
+			bg_focus = "#00ADB5",
+
+			-- tasklist_bg_focus = "#000000",
 		},
 	})
 end

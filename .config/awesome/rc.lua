@@ -82,14 +82,18 @@ myawesomemenu = {
 		end,
 	},
 }
-
+-- beautiful.awesome_icon = "~/Pictures/debian.png"
+naughty = require("naughty") -- if not yet loaded
+naughty.notify({ text = tostring(beautiful.awesome_icon) })
 mymainmenu = awful.menu({
 	items = {
 		{ "awesome", myawesomemenu, beautiful.awesome_icon },
+		-- { "awesome", myawesomemenu, "~/Pictures/debian.png" },
 		{ "open terminal", terminal },
 	},
 })
 
+-- mylauncher = awful.widget.launcher({ image = "debian.png", menu = mymainmenu })
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon, menu = mymainmenu })
 
 -- Menubar configuration
@@ -151,6 +155,10 @@ awful.screen.connect_for_each_screen(function(s)
 	set_tasklist(s)
 	-- Create the wibox
 	set_wibar(s)
+
+	-- local myicon = wibox.widget.imagebox()
+	-- myicon:set_image("~/Pictures/debian.png")
+	-- s.mywibox:add(myicon)
 end)
 -- }}}
 
@@ -237,4 +245,3 @@ end)
 client.connect_signal("unfocus", function(c)
 	c.border_color = beautiful.border_normal
 end)
--- }}}
